@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Prioritize, Plan, Protect</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600&family=Unbounded:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#6b49aa;--grid:rgba(197,102,169,.5);--paper:#fdf6e3;--card:#fffdf7;--field:#ffffff;--ink:#2b2b2b;--mut:#5b5360;--line:#2b2b2b;--bar:#f2b243;--hi:#f5d967;--acc:#e48340;--ct:#a8481a;--sky:#cdeff5;--shadow:#2b2b2b;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#2a1d47;--grid:rgba(197,102,169,.28);--paper:#33264f;--card:#40326a;--field:#2b2147;--ink:#fff7e2;--mut:#d9cfe6;--line:#fff7e2;--ct:#f2b07c;--sky:#2a3c5e;--shadow:#0e0818}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#2a1d47;--grid:rgba(197,102,169,.28);--paper:#33264f;--card:#40326a;--field:#2b2147;--ink:#fff7e2;--mut:#d9cfe6;--line:#fff7e2;--ct:#f2b07c;--sky:#2a3c5e;--shadow:#0e0818}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);background-color:var(--bg);background-image:linear-gradient(var(--grid) 2px,transparent 2px),linear-gradient(90deg,var(--grid) 2px,transparent 2px);background-size:72px 72px;font:17px/1.5 "Source Serif 4",Georgia,"Times New Roman",serif}
+main{max-width:980px;margin:0 auto;padding:28px 20px 56px}
+.win{position:relative;background:var(--paper);border:3px solid var(--line);border-radius:32px 32px 18px 18px;box-shadow:8px 8px 0 var(--shadow)}
+.win::before,.win::after{content:"";position:absolute;width:52px;height:52px;background-size:contain;pointer-events:none}
+.win::before{left:-14px;top:150px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 3C54 34 66 46 97 50C66 54 54 66 50 97C46 66 34 54 3 50C34 46 46 34 50 3Z' fill='%23fff7e2' stroke='%232b2b2b' stroke-width='4' stroke-linejoin='round'/%3E%3C/svg%3E")}
+.win::after{right:-12px;bottom:-20px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 3C54 34 66 46 97 50C66 54 54 66 50 97C46 66 34 54 3 50C34 46 46 34 50 3Z' fill='%23e48340' stroke='%232b2b2b' stroke-width='4' stroke-linejoin='round'/%3E%3C/svg%3E")}
+.winbar{display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--bar);color:#2b2b2b;border-bottom:3px solid var(--line);border-radius:29px 29px 0 0;padding:18px 24px}
+.dots{display:flex;gap:8px;flex:none}
+.dots i{width:18px;height:18px;border-radius:50%;border:2px solid #2b2b2b;background:#f5d967}
+.dots i:nth-child(2){background:#a8d5b5}.dots i:nth-child(3){background:#fff}
+.winbody{padding:24px}
+h1{font:800 clamp(17px,3.6vw,26px)/1.25 Unbounded,"Arial Black",Impact,system-ui,sans-serif;margin:0;text-transform:uppercase}
+h2{font:800 18px/1.25 Unbounded,"Arial Black",Impact,system-ui,sans-serif;margin:0 0 6px}
+h2::before{content:"";display:inline-block;width:.8em;height:.8em;border-radius:50%;background:var(--bar);border:2px solid var(--line);margin-right:.55em;vertical-align:-.05em}
+h3{font:600 14px/1.3 Unbounded,"Arial Black",Impact,system-ui,sans-serif;margin:16px 0 4px}
+.lead,.mut{color:var(--mut);margin:0 0 14px;font-size:16px}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer;font:600 13px/1.2 Unbounded,"Arial Black",Impact,system-ui,sans-serif;color:#2b2b2b;background:var(--hi);border:2px solid var(--line);border-radius:999px;padding:10px 16px;min-height:44px;box-shadow:3px 3px 0 var(--shadow)}
+button:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--shadow)}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+input[type=text],select{background:var(--field);color:var(--ink);border:2px solid var(--line);border-radius:12px;padding:10px 12px;min-height:44px;width:100%}
+.steps{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 14px}
+.step{flex:1;min-width:96px}
+.step.on,.tog.on,.day.on{background:var(--ink);color:var(--paper)}
+.bar{display:flex;flex-direction:column;gap:12px;margin:0 0 18px}
+.modes,.days{display:flex;gap:10px;flex-wrap:wrap}
+.day{flex:1;min-width:58px;padding:8px 4px}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-bottom:16px}
+.card{background:var(--card);border:2px solid var(--line);border-radius:20px;padding:20px;margin-bottom:16px;box-shadow:4px 4px 0 var(--shadow)}
+.cols .card{margin:0}
+.row{display:flex;gap:8px;align-items:center;justify-content:space-between;padding:8px 0;border-top:2px solid var(--line)}
+.row.add{border-top:0;padding-bottom:0}
+.x{padding:4px 12px;min-width:44px}
+.slot{display:flex;align-items:center;gap:12px;padding:8px 0;border-top:2px solid var(--line)}
+.slot.prot{border-left:8px solid var(--acc);padding-left:10px}
+.sl{width:124px;flex:none;font:600 13px/1.2 Unbounded,"Arial Black",Impact,system-ui,sans-serif}
+.ess{display:flex;gap:12px;align-items:center;padding:8px 0;cursor:pointer;min-height:44px}
+.cb{width:26px;height:26px;min-height:0;padding:0;flex:none;accent-color:var(--acc)}
+.blk{display:flex;flex-direction:column;gap:12px}
+.say{background:var(--sky);color:var(--ink);border:2px solid var(--line);border-radius:12px;padding:12px;margin:0}
+.ok{color:var(--ct);font-weight:600;margin:0}
+.ta{width:100%;margin-top:10px;font:inherit;font-size:15px;background:var(--field);color:var(--ink);border:2px solid var(--line);border-radius:12px;padding:10px}
+.sum{display:flex;gap:20px;flex-wrap:wrap;font-size:15px;padding:12px 0;color:var(--mut)}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:20px;font-size:14px;color:var(--mut)}
+</style>
+</head>
+<body>
+<main>
+<div class="win">
+<div class="winbar"><h1>Prioritize, plan, protect</h1><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span></div>
+<div class="winbody">
+<p class="lead">Choose up to three priorities for each day, place them in your day, then plan how to say no or negotiate when something gets in the way.</p>
+<div id="app"></div>
+</div>
+</div>
+</main>
+<script>
+const DAYS=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"],FULLD=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],SLOTS=["Morning","Afternoon","Evening"];
+const ESS=["Get enough sleep","Spend time in nature","Move your body","Nourish your body","Connect with loved ones"];
+const D=()=>({step:0,view:"week",day:(new Date().getDay()+6)%7,pri:[],blocks:[],daily:{}});
+let S=D(),armed=false,copyState="";
+try{const r=localStorage.getItem("ppp-v2");if(r)S=Object.assign(D(),JSON.parse(r))}catch(e){}
+const save=()=>{try{localStorage.setItem("ppp-v2",JSON.stringify(S))}catch(e){}};
+if(S.essV!==2){Object.values(S.daily||{}).forEach(dd=>{const a=dd[1];dd[1]=dd[2];dd[2]=a});S.essV=2;save()}
+const $=s=>document.querySelector(s);
+const uid=()=>Math.random().toString(36).slice(2,9);
+function el(t,a,...k){const e=document.createElement(t);for(const x in a||{}){if(x==="class")e.className=a[x];else if(x.startsWith("on"))e[x]=a[x];else e.setAttribute(x,a[x])}k.flat().filter(c=>c!=null&&c!==false).forEach(c=>e.append(c));return e}
+const P=id=>S.pri.find(p=>p.id===id);
+const go=i=>{copyState="";S.step=i;save();render()};
+const vis=()=>S.view==="day"?[S.day]:[0,1,2,3,4,5,6];
+
+function bar(){
+  const mk=(v,t)=>el("button",{class:"tog"+(S.view===v?" on":""),"aria-pressed":String(S.view===v),onclick:()=>{S.view=v;save();render()}},t);
+  const r=el("div",{class:"bar"},el("div",{class:"modes",role:"group","aria-label":"View"},mk("week","Whole week"),mk("day","One day at a time")));
+  if(S.view==="day")r.append(el("div",{class:"days",role:"group","aria-label":"Choose a day"},...DAYS.map((d,i)=>el("button",{class:"day"+(S.day===i?" on":""),"aria-pressed":String(S.day===i),"aria-label":FULLD[i],onclick:()=>{S.day=i;save();render()}},d))));
+  return r;
+}
+function dayPri(d){
+  const items=S.pri.filter(p=>p.day===d);
+  const inp=el("input",{type:"text",maxlength:"60",placeholder:"e.g. Finish the budget proposal","aria-label":"New priority for "+FULLD[d]});
+  const add=()=>{const v=inp.value.trim();if(!v||items.length>=3)return;S.pri.push({id:uid(),day:d,text:v});save();render()};
+  inp.onkeydown=e=>{if(e.key==="Enter")add()};
+  return el("section",{class:"card"},el("h2",{},FULLD[d]),el("p",{class:"mut"},items.length+" of 3 chosen"),
+    ...items.map(p=>el("div",{class:"row"},el("span",{},p.text),
+      el("button",{class:"x","aria-label":"Remove "+p.text,onclick:()=>{S.pri=S.pri.filter(q=>q.id!==p.id);S.blocks=S.blocks.filter(b=>b.pid!==p.id);save();render()}},"✕"))),
+    items.length<3?el("div",{class:"row add"},inp,el("button",{onclick:add},"Add")):el("p",{class:"mut"},"That’s three. Fewer priorities are easier to protect."));
+}
+const pri=()=>el("div",{},el("div",{class:"cols"},...vis().map(dayPri)),el("button",{class:"tog on",onclick:()=>go(1)},"Next: plan the days"));
+function slotRow(d,si){
+  const b=S.blocks.find(x=>x.day===d&&x.slot===si),ps=S.pri.filter(p=>p.day===d);
+  const sel=el("select",{"aria-label":FULLD[d]+" "+SLOTS[si].toLowerCase()+" priority",onchange:e=>{S.blocks=S.blocks.filter(x=>x!==b);if(e.target.value)S.blocks.push({id:uid(),pid:e.target.value,day:d,slot:si,prot:false});save();render()}},
+    el("option",{value:""},"Nothing planned"),...ps.map(p=>{const o=el("option",{value:p.id},p.text);o.selected=!!b&&b.pid===p.id;return o}));
+  return el("label",{class:"slot"+(b&&b.prot?" prot":"")},el("span",{class:"sl"},(b&&b.prot?"🔒 ":"")+SLOTS[si]),sel);
+}
+function dayPlan(d){
+  const dd=S.daily[d]=S.daily[d]||{};
+  const cnt=()=>"Daily essentials ("+ESS.filter((_,i)=>dd[i]).length+" of "+ESS.length+")";
+  const h=el("h3",{},cnt());
+  return el("section",{class:"card"},el("h2",{},FULLD[d]),
+    S.pri.some(p=>p.day===d)?null:el("p",{class:"mut"},"No priorities yet. Add some in Prioritize."),
+    ...SLOTS.map((_,si)=>slotRow(d,si)),h,
+    ...ESS.map((t,i)=>{const id="e"+d+"-"+i,cb=el("input",{type:"checkbox",class:"cb",id});cb.checked=!!dd[i];cb.onchange=()=>{dd[i]=cb.checked;save();h.textContent=cnt()};return el("label",{class:"ess",for:id},cb,t)}));
+}
+const plan=()=>el("div",{},el("p",{class:"mut"},"Choose which priority goes in each part of the day, and tick off your daily essentials."),el("div",{class:"cols"},...vis().map(dayPlan)),el("button",{class:"tog on",onclick:()=>go(2)},"Next: protect your time"));
+
+function slotKeys(){const o=[];DAYS.forEach((d,di)=>SLOTS.forEach((s,si)=>{if(!S.blocks.some(x=>x.day===di&&x.slot===si))o.push({k:di+"-"+si,t:FULLD[di]+" "+s.toLowerCase()})}));return o}
+function line(b){
+  const p=P(b.pid),ask=(b.ask||"").trim()||"that",when=FULLD[b.day]+" "+SLOTS[b.slot].toLowerCase();
+  if(b.mode==="no")return "Thank you for asking. I can’t take on "+ask+" then, because that time is already committed to "+p.text+".";
+  if(b.mode==="neg"){const a=slotKeys().find(x=>x.k===b.alt);return "I can’t do "+ask+" on "+when+", but I could do it "+(a?"on "+a.t:"at another time")+". Would that work?"}
+  if(b.mode==="yes")return "If I say yes to "+ask+", I’m saying no to "+p.text+". Is that a trade I want to make?";
+  return "Choose how you’ll respond.";
+}
+function shield(b,p){
+  const out=el("p",{class:"say",role:"status"},line(b));
+  const ask=el("input",{type:"text",maxlength:"80",value:b.ask||"",placeholder:"What might get in the way? e.g. a last-minute meeting","aria-label":"What might get in the way of "+p.text,oninput:e=>{b.ask=e.target.value;save();out.textContent=line(b)}});
+  const modes=el("div",{class:"modes",role:"group","aria-label":"How you’ll respond"},...[["no","Say no"],["neg","Negotiate"],["yes","Say yes, and let go"]].map(([k,t])=>
+    el("button",{class:"tog"+(b.mode===k?" on":""),"aria-pressed":String(b.mode===k),onclick:()=>{b.mode=b.mode===k?"":k;save();render()}},t)));
+  let sel=null;
+  if(b.mode==="neg"){sel=el("select",{"aria-label":"Offer another time",onchange:e=>{b.alt=e.target.value;save();out.textContent=line(b)}},el("option",{value:""},"Offer another time…"));
+    slotKeys().forEach(o=>{const op=el("option",{value:o.k},o.t);op.selected=o.k===b.alt;sel.append(op)})}
+  return el("div",{class:"blk"},el("p",{class:"mut"},"When something gets in the way, how will you respond?"),ask,modes,sel,out);
+}
+function planText(){
+  const L=["My week: prioritize, plan, protect",""];
+  DAYS.forEach((d,di)=>{
+    const ps=S.pri.filter(p=>p.day===di),bs=S.blocks.filter(b=>b.day===di).sort((a,b)=>a.slot-b.slot);
+    if(!ps.length&&!bs.length)return;
+    L.push(FULLD[di]+":");ps.forEach(p=>L.push("- Priority: "+p.text));
+    bs.forEach(b=>L.push("- "+SLOTS[b.slot]+": "+P(b.pid).text+(b.prot?" [protected]":"")+(b.prot&&b.mode?". If it’s threatened: "+line(b):"")));
+    L.push("");
+  });
+  L.push("Daily essentials:");ESS.forEach(t=>L.push("- "+t));
+  return L.join("\n");
+}
+function copyBox(){
+  const txt=planText();
+  const ta=copyState==="manual"?el("textarea",{readonly:"readonly",rows:"10","aria-label":"Plan text",class:"ta"}):null;
+  if(ta)ta.value=txt;
+  const btn=el("button",{class:"tog on",onclick:async()=>{
+    try{await navigator.clipboard.writeText(txt);copyState="done"}catch(e){copyState="manual"}
+    render();const t=$(".ta");if(t){t.focus();t.select()}
+  }},"Copy my plan as text");
+  return el("section",{class:"card"},btn,
+    copyState==="done"?el("p",{class:"ok",role:"status"},"Copied. Paste it into a note, email or message."):null,
+    copyState==="manual"?el("p",{class:"mut",role:"status"},"Your browser blocked automatic copying. Select the text below and copy it."):null,ta);
+}
+function prot(){
+  const days=vis(),bs=S.blocks.filter(b=>days.includes(b.day)).sort((a,b)=>a.day-b.day||a.slot-b.slot);
+  const head=el("section",{class:"card"},el("h2",{},"Guard your priorities"),
+    el("p",{class:"mut"},"Protecting means deciding in advance how you’ll say no, or negotiate, when something gets in the way of your priorities."),
+    el("p",{class:"ok"},S.blocks.filter(b=>b.prot).length+" of "+S.blocks.length+" planned blocks protected"));
+  if(!bs.length)return el("div",{},head,el("section",{class:"card"},el("p",{},"Nothing is planned for "+(S.view==="day"?FULLD[S.day]:"the week")+" yet."),el("button",{onclick:()=>go(1)},"Plan your days")));
+  return el("div",{},head,...bs.map(b=>{const p=P(b.pid);
+    return el("section",{class:"card blk"},el("div",{},el("strong",{},FULLD[b.day]+" "+SLOTS[b.slot].toLowerCase()+": "),p.text),
+      el("button",{class:"tog"+(b.prot?" on":""),"aria-pressed":String(!!b.prot),onclick:()=>{b.prot=!b.prot;save();render()}},b.prot?"🔒 Protected":"Protect this block"),
+      b.prot?shield(b,p):null)}),copyBox());
+}
+function summary(){return el("div",{class:"sum"},el("span",{},"Priorities: "+S.pri.length),el("span",{},"Planned: "+S.blocks.length),el("span",{},"Protected: "+S.blocks.filter(b=>b.prot).length))}
+function foot(){
+  return el("div",{class:"foot"},el("span",{},"Saved on this device only."),
+    el("button",{onclick:()=>{if(!armed){armed=true;render();return}S=D();armed=false;save();render()}},armed?"Tap again to clear everything":"Start a new week"));
+}
+function render(){
+  const app=$("#app");app.textContent="";
+  app.append(el("nav",{class:"steps","aria-label":"Steps"},...["Prioritize","Plan","Protect"].map((t,i)=>
+    el("button",{class:"step"+(S.step===i?" on":""),"aria-current":S.step===i?"step":"false",onclick:()=>go(i)},t))),
+    bar(),[pri,plan,prot][S.step](),summary(),foot());
+}
+render();
+</script>
+</body>
+</html>
